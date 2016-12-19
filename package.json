@@ -1,0 +1,19 @@
+{
+  "name": "graphql-research",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Siriwut Ponwapee",
+  "license": "ISC",
+  "dependencies": {
+    "babel-runtime": "^6.20.0",
+    "graphql": "^0.8.2",
+    "graphql-helpers": "0.0.10",
+    "mongodb": "^2.2.14",
+    "mongoose": "^4.7.2"
+  }
+}
