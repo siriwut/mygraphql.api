@@ -10,6 +10,6 @@ module.exports = {
         type: GraphQLString
       }
     },
-    resolve: UserDB.findUserByID
+    resolve: UserDB.findByID
   }
 };

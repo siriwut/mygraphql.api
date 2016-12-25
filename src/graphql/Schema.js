@@ -17,8 +17,8 @@ const Query = new GraphQLObjectType({
     stuff: StuffQueries.stuff,
     role: RoleQueries.role,
     carts: CartQueries.carts,
-    orders: OrderQueries.orders,
-    orderTransactions: OrderTransactionQueries.orderTransactions
+    order: OrderQueries.orders,
+    orderTransaction: OrderTransactionQueries.orderTransaction
   })
 });
 

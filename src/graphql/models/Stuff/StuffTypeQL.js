@@ -67,3 +67,51 @@ registry.createType(`
 `);
 
 module.exports = registry.getType('Stuff');
+
+// const {
+//     GraphQLBoolean,
+//     GraphQLString,
+//     GraphQLObjectType,
+//     GraphQLNonNull,
+//     GraphQLList,
+//     GraphQLID,
+//     GraphQLInt
+// } = require('graphql');
+
+// const Stuff = new GraphQLObjectType({
+//   name: 'Stuff',
+//   fields: () => ({
+//     name: { type: GraphQLString },
+//     category: { type: GraphQLString },
+//     description: { type: GraphQLString },
+//     location: { type: Location },
+//     market: { type: GraphQLString },
+//     owner: { type: GraphQLString },
+//     path: { type: GraphQLString },
+//     price: { type: GraphQLInt },
+//     quantity: { type: GraphQLInt },
+//     category: { type: GraphQLString },
+//     tags: { type: new GraphQLList(GraphQLString) },
+//     owner: { type: GraphQLString },
+//     createDate: { type: GraphQLString },
+//     market: { type: GraphQLString },
+//     images: { type: new GraphQLList(StuffImage) },
+//     wishes: { type: new GraphQLList(GraphQLString },
+//     view: { type: GraphQLInt },
+//     likes: { type: new GraphQLList(GraphQLString) },
+//     unlikes: { type: new GraphQLList(GraphQLString) },
+//     countPopular: { type: GraphQLInt },
+//     repostDate: { type: GraphQLString },
+//     categories: { type: new GraphQLList(GraphQLString) },
+//     markets: { type: new GraphQLList(GraphQLString) },
+//     editorPickDate: { type: GraphQLString },
+//     deleted: { type: GraphQLBoolean }
+//     variations: { type: new GraphQLList(Variation) },
+//     sold: { type: GraphQLList(GraphQLList(Boolean)) }
+//     soldDate: { type: GraphQLString },
+//     checkOwner: { type: GraphQLString },
+//     updatedDate: { type: GraphQLString } 
+//   })
+// });
+
+// module.exports = Stuff;

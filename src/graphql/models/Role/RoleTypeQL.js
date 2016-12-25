@@ -1,13 +1,34 @@
-const { Registry } = require('graphql-helpers');
+const {
+  GraphQLBoolean,
+  GraphQLString,
+  GraphQLObjectType,
+  GraphQLNonNull,
+  GraphQLList,
+  GraphQLID,
+  GraphQLInt
+} = require('graphql');
 
-const registry = new Registry();
+const Role = new GraphQLObjectType({
+  name: 'Role',
+  fields: () => ({
+    _id: { type: GraphQLString },
+    name: { type: GraphQLString },
+    perms: { type: new GraphQLList(GraphQLInt) }
+  })
+});
 
-registry.createType(`
-  type Role {
-    _id: String
-    name: String
-    perms: [Int]
-  }`
-);
+module.exports = Role;
 
-module.exports = registry.getType('Role');
+// const { Registry } = require('graphql-helpers');
+
+// const registry = new Registry();
+
+// registry.createType(`
+//   type Role {
+//     _id: String
+//     name: String
+//     perms: [Int]
+//   }`
+// );
+
+// module.exports = registry.getType('Role');

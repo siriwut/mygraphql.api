@@ -2,7 +2,7 @@ const { Schema } = require('mongoose');
 const { Types: { ObjectId } } = Schema;
 
 const CartSchema = new Schema({
-  user: { type: ObjectId, ref: 'User' },
+  user: { type: String, ref: 'User' },
   seller: {
     _id: { type: ObjectId, ref: 'User' },
     logo: String,

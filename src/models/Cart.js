@@ -7,8 +7,8 @@ module.exports = Cart;
 
 module.exports.findByUserID = (root, { userId }) => {
   return new Promise((resolve, reject) => {
-    Cart.find({ user: userId }, (err, cart) => {
-      err ? reject(err) : resolve(cart);
+    Cart.find({ user: userId }, (err, carts) => {
+      err ? reject(err) : resolve(carts);
     });
   });
 };

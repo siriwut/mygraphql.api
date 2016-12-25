@@ -16,7 +16,7 @@ registry.createType(`
     password: String
     gender: String
     birthday: String
-    role: Role
+    role: UserRole
     shop: Shop
     facebook: Facebook
     verifyEmail: Boolean
@@ -26,7 +26,7 @@ registry.createType(`
 );
 
 registry.createType(`
-  type Role {
+  type UserRole {
     id: String
     name: String
   }`
@@ -118,3 +118,141 @@ registry.createType(`
 );
 
 module.exports = registry.getType('User');
+
+// const {
+//   GraphQLBoolean,
+//   GraphQLString,
+//   GraphQLObjectType,
+//   GraphQLNonNull,
+//   GraphQLList,
+//   GraphQLID,
+//   GraphQLInt
+// } = require('graphql');
+
+
+// const CardType = new GraphQLObjectType({
+//   name: 'CardType',
+//   fields: () => ({
+//     lastDigits: { type: GraphQLString },
+//     cardId: { type: GraphQLString }
+//   })
+// });
+
+// const OmiseType = new GraphQLObjectType({
+//   name: 'OmiseType',
+//   fields: () => ({
+//     cards: { type: new GraphQLList(CardType) },
+//     customerId: { type: GraphQLString },
+//     defaultCard: { type: GraphQLString }
+//   })
+// });
+
+// const UserPaymentType = new GraphQLObjectType({
+//   name: 'UserPaymentType',
+//   fields: () => ({
+//     omise: { type: OmiseType }
+//   })
+// });
+
+// const UserAddressType = new GraphQLObjectType({
+//   name: 'UserAddressType',
+//   fields: () => ({
+//     _id: { type: GraphQLString },
+//     name: { type: GraphQLString },
+//     address: { type: GraphQLString },
+//     email: { type: GraphQLString },
+//     tel: { type: GraphQLString },
+//     city: { type: GraphQLString },
+//     postalCode: { type: GraphQLString }
+//   })
+// });
+
+// const PageType = new GraphQLObjectType({
+//   name: 'PageType',
+//   fields: () => ({
+//     id: { type: GraphQLString },
+//     name: { type: GraphQLString },
+//     token: { type: GraphQLString },
+//     enable: { type: GraphQLBoolean }
+//   })
+// });
+
+// const FacebookType = new GraphQLObjectType({
+//   name: 'FacebookType',
+//   fields: () => ({
+//     id: { type: GraphQLString },
+//     email: { type: GraphQLString },
+//     token: { type: GraphQLString },
+//     page: { type: PageType }
+//   })
+// });
+
+// const BrandImageType = new GraphQLObjectType({
+//   name: 'BrandImageType',
+//   fields: () => ({
+//     path: { type: GraphQLString },
+//     caption: { type: GraphQLString }
+//   })
+// });
+
+// const UserShopType = new GraphQLObjectType({
+//   name: 'UserShopType',
+//   fields: () => ({
+//     name: { type: GraphQLString },
+//     tel: { type: GraphQLInt },
+//     website: { type: GraphQLString },
+//     facebook: { type: GraphQLString },
+//     instagram: { type: GraphQLString },
+//     policy: { type: GraphQLString },
+//     address: { type: GraphQLString },
+//     idCard: { type: GraphQLString },
+//     verified: { type: GraphQLBoolean },
+//     requestDate: { type: GraphQLString },
+//     status: { type: GraphQLString },
+//     cover: { type: GraphQLString },
+//     paymentPolicy: { type: GraphQLString },
+//     shippingPolicy: { type: GraphQLString },
+//     refundPolicy: { type: GraphQLString },
+//     headline: { type: GraphQLString },
+//     brandStory: { type: GraphQLString },
+//     prettyUrl: { type: GraphQLString },
+//     brandImages: { type: new GraphQLList(BrandImageType) },
+//     logo: { type: GraphQLString },
+//     verifiedDate: { type: GraphQLString },
+//     welcomeMessage: { type: GraphQLString }
+//   })
+// });
+
+// const UserRoleType = new GraphQLObjectType({
+//   name: 'UserRoleType',
+//   fields: () => ({
+//     id: { type: GraphQLString },
+//     name: { type: GraphQLString }
+//   })
+// });
+
+// const User = new GraphQLObjectType({
+//   name: 'User',
+//   fields: () => ({
+//     _id: { type: GraphQLString },
+//     email: { type: GraphQLString },
+//     firstname: { type: GraphQLString },
+//     lastname: { type: GraphQLString },
+//     avatar: { type: GraphQLString },
+//     country: { type: GraphQLString },
+//     havePassword: { type: GraphQLBoolean },
+//     detail: { type: GraphQLString },
+//     view: { type: GraphQLInt },
+//     password: { type: GraphQLString },
+//     gender: { type: GraphQLString },
+//     birthday: { type: GraphQLString },
+//     role: { type: UserRoleType },
+//     shop: { type: UserShopType },
+//     facebook: { type: FacebookType },
+//     verifyEmail: { type: GraphQLBoolean },
+//     addresses: { type: new GraphQLList(UserAddressType) },
+//     payments: { type: UserPaymentType }
+//   })
+// });
+
+// module.exports = User;

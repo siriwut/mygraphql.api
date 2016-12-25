@@ -8,7 +8,6 @@ module.exports = Stuff;
 module.exports.findByID = (root, { _id }) => {
   return new Promise((resolve, reject) => {
     Stuff.findOne({ _id }, (err, stuff) => {
-      console.log(stuff);
       err ? reject(err) : resolve(stuff);
     });
   });
