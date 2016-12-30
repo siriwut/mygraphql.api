@@ -1,15 +1,15 @@
 const { GraphQLID, GraphQLString } = require('graphql');
-const UserType = require('./UserTypeQL');
-const UserDB = require('../../../models/User');
+const { Role } = require('./RoleSchema');
+const RoleDB = require('../../../models/Role');
 
 module.exports = {
-  user: {
-    type: UserType,
+  role: {
+    type: Role,
     args: {
       _id: {
         type: GraphQLString
       }
     },
-    resolve: UserDB.findByID
+    resolve: RoleDB.findByID
   }
 };

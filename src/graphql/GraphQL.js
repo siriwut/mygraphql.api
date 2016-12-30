@@ -14,7 +14,18 @@ class GraphQL {
   }
 
   exec() {
-    graphql(schema, this.req.query.query).then((data) => {
+    const query = this.req.graphql.query || '';
+    const variables = this.req.graphql.variables || {};
+    const operationName = this.req.graphql.operationName || '';
+
+    graphql(
+      schema,
+      query,
+      null,
+      null,
+      variables,
+      operationName
+    ).then((data) => {
       this.res.write(JSON.stringify(data));
       this.res.end();
     });

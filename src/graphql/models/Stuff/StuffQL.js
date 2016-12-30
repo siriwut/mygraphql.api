@@ -1,9 +1,7 @@
-const StuffQueries = require('./StuffQueriesQL');
-const StuffType = require('./StuffTypeQL');
+const StuffQueries = require('./StuffQueries');
 
 const Stuff = {
-  StuffQueries: StuffQueries,
-  StuffType: StuffType
+  StuffQueries: StuffQueries
 };
 
 module.exports = Stuff;

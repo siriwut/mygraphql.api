@@ -17,7 +17,9 @@ const Role = new GraphQLObjectType({
   })
 });
 
-module.exports = Role;
+module.exports = { 
+  Role
+};
 
 // const { Registry } = require('graphql-helpers');
 

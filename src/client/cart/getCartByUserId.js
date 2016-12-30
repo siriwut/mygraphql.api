@@ -1,4 +1,4 @@
-const { executeQuery } = require('../client');
+const { executeGetQuery } = require('../client');
 
 const userId = '4f88f907213200ba6b000001';
 
@@ -28,4 +28,4 @@ const graphQlQuery = `
   }
 `;
 
-executeQuery(graphQlQuery);
+executeGetQuery(graphQlQuery);

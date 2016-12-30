@@ -1,12 +1,12 @@
 const { GraphQLID, GraphQLString, GraphQLList } = require('graphql');
-const OrderType = require('./OrderTypeQL');
+const { Order } = require('./OrderSchema');
 const OrderDB = require('../../../models/Order');
 
 module.exports = {
   orders: {
-    type: new GraphQLList(OrderType),
+    type: new GraphQLList(Order),
     args: {
-      orderId: {
+      userId: {
         type: GraphQLString
       }
     },

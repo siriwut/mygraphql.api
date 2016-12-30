@@ -5,9 +5,9 @@ const Order = mongoose.model('Order', order);
 
 module.exports = Order;
 
-module.exports.findByOrderID = (root, { orderId }) => {
+module.exports.findByOrderID = (root, { userId }) => {
   return new Promise((resolve, reject) => {
-    Order.find({ id: orderId }, (err, orders) => {
+    Order.find({ 'user._id': userId }, (err, orders) => {
       err ? reject(err) : resolve(orders);
     });
   });

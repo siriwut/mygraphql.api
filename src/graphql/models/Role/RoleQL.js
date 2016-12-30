@@ -1,9 +1,7 @@
-const RoleQueries = require('./RoleQueriesQL');
-const RoleType = require('./RoleTypeQL');
+const RoleQueries = require('./RoleQueries');
 
 const Role = {
-  RoleQueries: RoleQueries,
-  RoleType: RoleType
+  RoleQueries: RoleQueries
 };
 
 module.exports = Role;

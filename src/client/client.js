@@ -2,7 +2,7 @@ const http = require('http');
 const util = require('util');
 const querystring = require('querystring');
 
-const executeQuery = (graphQlQuery) => {
+const executeGetQuery = (graphQlQuery) => {
   const options = {
     hostname: 'localhost',
     port: 3000,
@@ -29,10 +29,45 @@ const executeQuery = (graphQlQuery) => {
   });
 
   req.end();
-}
+};
+
+const executePostQuery = (graphQlQuery = {}) => {
+  const postData = JSON.stringify(graphQlQuery);
+
+  const options = {
+    hostname: 'localhost',
+    port: 3000,
+    path: '/graphql',
+    method: 'POST',
+    contentType: 'application/json',
+    contentLenght: Buffer.byteLength(graphQlQuery)
+  };
+
+  const req = http.request(options, (res) => {
+    res.setEncoding('utf8');
+
+    res.on('data', (chunk) => {
+      const data = JSON.parse(chunk);
+      console.log('---------JSON Response---------');
+      console.log(util.inspect(data, { showHidden: true, depth: 10 }));
+    });
+
+    res.on('end', () => {
+      //console.log('responsed');
+    });
+  });
+
+  req.on('error', (e) => {
+    console.log(e.message);
+  });
+
+  req.write(postData);
+  req.end();
+};
 
 module.exports = {
-  executeQuery
+  executeGetQuery,
+  executePostQuery
 };
 
 

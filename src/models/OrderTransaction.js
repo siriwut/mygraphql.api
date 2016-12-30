@@ -1,14 +1,18 @@
 const mongoose = require('mongoose');
+const { Schema } = mongoose;
+const { Types: { ObjectId } } = Schema;
 const orderTransaction = require('../schemas/OrderTransactionSchema');
 
-var OrderTransaction = mongoose.model('OrderTransaction', orderTransaction);
+const collectionName = 'orderTransactions';// specify only two or more words collection name
+
+const OrderTransaction = mongoose.model('OrderTransaction', orderTransaction, collectionName);
 
 module.exports = OrderTransaction;
 
-module.exports.findByOrderTransactionID = (root, { transactionId }) => {
+module.exports.findByTransactionID = (root, { transactionId }) => {
   return new Promise((resolve, reject) => {
-    OrderTransaction.find({ id: transactionId }, (err, orderTransactions) => {
-      err ? reject(err) : resolve(orderTransactions);
+    OrderTransaction.findOne({ id: transactionId }, (err, orderTransaction) => {
+      err ? reject(err) : resolve(orderTransaction);
     });
   });
 };

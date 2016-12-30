@@ -1,9 +1,9 @@
-const UserQueries = require('./UserQueriesQL');
-const UserType = require('./UserTypeQL');
+const UserQueries = require('./UserQueries');
+const UserMutation = require('./UserMutation');
 
 const User = {
-  UserQueries: UserQueries,
-  UserType: UserType
+  UserQueries,
+  UserMutation
 };
 
 module.exports = User;

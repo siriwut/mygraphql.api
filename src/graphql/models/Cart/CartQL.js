@@ -1,9 +1,7 @@
-const CartQueries = require('./CartQueriesQL');
-const CartType = require('./CartTypeQL');
+const CartQueries = require('./CartQueries');
 
 const Cart = {
-  CartQueries: CartQueries,
-  CartType: CartType
+  CartQueries: CartQueries
 };
 
 module.exports = Cart;

@@ -2,6 +2,7 @@ const { Schema } = require('mongoose');
 const { Types: { ObjectId } } = Schema;
 
 const OrderSchema = new Schema({
+  id: String,
   stuff: {
     _id: { type: ObjectId, ref: 'Stuff' },
     path: String,
@@ -15,7 +16,6 @@ const OrderSchema = new Schema({
       email: String
     }
   },
-  id: String,
   shipping: {
     name: String,
     address: String,
@@ -28,6 +28,13 @@ const OrderSchema = new Schema({
   paymentStatus: String,
   orderStatus: String,
   shopStatus: String,
+  user : {
+    _id : String,
+    avatar : String,
+    email : String,
+    firstname : String,
+    lastname : String
+  },
   payment: {
     description: String,
     amount: Number,

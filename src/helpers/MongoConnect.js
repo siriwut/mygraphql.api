@@ -14,4 +14,6 @@ class MongoConnect {
   }
 }
 
+
+
 module.exports = new MongoConnect('localhost', 27017, 'shopspot');

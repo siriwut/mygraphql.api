@@ -1,10 +1,10 @@
 const { GraphQLID, GraphQLString, GraphQLList } = require('graphql');
-const CartType = require('./CartTypeQL');
+const { Cart } = require('./CartSchema');
 const CartDB = require('../../../models/Cart');
 
 module.exports = {
   carts: {
-    type: new GraphQLList(CartType),
+    type: new GraphQLList(Cart),
     args: {
       userId: {
         type: GraphQLString

@@ -1,9 +1,7 @@
-const OrderTransactionQueries = require('./OrderTransactionQueriesQL');
-const OrderTransactionType = require('./OrderTransactionTypeQL');
+const OrderTransactionQueries = require('./OrderTransactionQueries');
 
 const OrderTransaction = {
-  OrderTransactionQueries: OrderTransactionQueries,
-  OrderTransactionType: OrderTransactionType
+  OrderTransactionQueries: OrderTransactionQueries
 };
 
 module.exports = OrderTransaction;

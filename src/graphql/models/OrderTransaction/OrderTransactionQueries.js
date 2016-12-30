@@ -1,15 +1,15 @@
 const { GraphQLID, GraphQLString } = require('graphql');
-const OrderTransactionType = require('./OrderTransactionTypeQL');
+const { OrderTransaction } = require('./OrderTransactionSchema');
 const OrderTransactionDB = require('../../../models/OrderTransaction');
 
 module.exports = {
   orderTransaction: {
-    type: OrderTransactionType,
+    type: OrderTransaction,
     args: {
       transactionId: {
         type: GraphQLString
       }
     },
-    resolve: OrderTransactionDB.findByOrderID
+    resolve: OrderTransactionDB.findByTransactionID
   }
 };

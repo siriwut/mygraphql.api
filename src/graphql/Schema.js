@@ -3,12 +3,12 @@ const {
   GraphQLSchema
 } = require('graphql');
 
-const { UserQueries, UserType } = require('./models/User/UserQL');
-const { StuffQueries, StuffType } = require('./models/Stuff/StuffQL');
-const { RoleQueries, RoleType } = require('./models/Role/RoleQL');
-const { CartQueries, CartType } = require('./models/Cart/CartQL');
-const { OrderQueries, OrderType } = require('./models/Order/OrderQL');
-const { OrderTransactionQueries, OrderTransactionType } = require('./models/OrderTransaction/OrderTransactionQL');
+const { UserQueries, UserMutation } = require('./models/User/UserQL');
+const { StuffQueries } = require('./models/Stuff/StuffQL');
+const { RoleQueries } = require('./models/Role/RoleQL');
+const { CartQueries } = require('./models/Cart/CartQL');
+const { OrderQueries } = require('./models/Order/OrderQL');
+const { OrderTransactionQueries } = require('./models/OrderTransaction/OrderTransactionQL');
 
 const Query = new GraphQLObjectType({
   name: 'Query',
@@ -22,6 +22,14 @@ const Query = new GraphQLObjectType({
   })
 });
 
+const Mutation = new GraphQLObjectType({
+  name: 'Mutation',
+  fields: () => ({
+    createUser: UserMutation.createUser
+  })
+});
+
 module.exports = new GraphQLSchema({
-  query: Query
+  query: Query,
+  mutation: Mutation
 });

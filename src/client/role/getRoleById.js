@@ -1,4 +1,4 @@
-const { executeQuery } = require('../client');
+const { executeGetQuery } = require('../client');
 
 const roleId = '520b1e96f8c94d6314000001';
 
@@ -11,4 +11,4 @@ const roleQuery = `
   }
 `;
 
-executeQuery(roleQuery);
+executeGetQuery(roleQuery);

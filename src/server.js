@@ -9,18 +9,6 @@ const mongoConnect = require('./helpers/MongoConnect');
 const hostname = 'localhost';
 const port = 3000;
 
-const _parseGraphQlQuery = (query) => {
-  const nextQuery = Object.assign({}, query);
-
-  if (query.query) {
-    nextQuery.query = decodeURIComponent(nextQuery.query);
-
-    return nextQuery;
-  }
-
-  return nextQuery;
-}
-
 const _resolveReq = (req) => {
   const nextReq = Object.assign({}, req);
   urlObj = url.parse(decodeURIComponent(nextReq.url), true);
@@ -33,18 +21,54 @@ const _resolveReq = (req) => {
   return nextReq;
 };
 
-
-const server = http.createServer((req, res) => {
-
+const _resolveGraphQlQuery = (req) => {
   const nextReq = _resolveReq(req);
 
-  const headers = nextReq.headers;
-  const method = nextReq.method;
-  const pathname = nextReq.pathname;
+  nextReq.graphql = { 
+    query: nextReq.query.query,
+  };
 
-  const graphql = new GraphQL(nextReq, res);
-  
-  graphql.exec();
+  return nextReq;
+}
+
+const _resolveGraphQlMutation = (req, chunk) => {
+  const nextReq = Object.assign({}, req);
+  const data = JSON.parse(chunk.toString());
+
+  nextReq.graphql = { 
+    query: data.query,
+    operationName: data.operationName || '',
+    variables: data.variables || {}
+  };
+
+  return nextReq;
+}
+
+
+const server = http.createServer((req, res) => {
+  const headers = req.headers;
+  const method = req.method;
+  const pathname = req.pathname;
+
+  if (method === 'GET') {
+    const nextReq = _resolveGraphQlQuery(req);
+    const graphql = new GraphQL(nextReq, res);
+    
+    graphql.exec();
+  }
+
+  if (method === 'POST') {
+    const body = [];
+
+    req.on('data', (chunk) => {
+      body.push(chunk);
+    }).on('end', () => {
+      const nextReq = _resolveGraphQlMutation(req, Buffer.concat(body));
+      const graphql = new GraphQL(nextReq, res);
+
+      graphql.exec();
+    });
+  }
 });
 
 const listen = () => {

@@ -1,9 +1,7 @@
-const OrderQueries = require('./OrderQueriesQL');
-const OrderType = require('./OrderTypeQL');
+const OrderQueries = require('./OrderQueries');
 
 const Order = {
-  OrderQueries: OrderQueries,
-  OrderType: OrderType
+  OrderQueries: OrderQueries
 };
 
 module.exports = Order;

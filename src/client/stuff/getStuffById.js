@@ -1,4 +1,4 @@
-const { executeQuery } = require('../client');
+const { executeGetQuery } = require('../client');
 
 const stuffId = '50c8072ded6c52a304000001';
 
@@ -52,4 +52,4 @@ const stuffQuery = `
   }
 `;
 
-executeQuery(stuffQuery);
+executeGetQuery(stuffQuery);
