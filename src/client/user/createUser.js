@@ -11,6 +11,8 @@ const graphQlQuery = `
       detail
       password
       username
+      gender
+      birthday
     }
   }
 `;
@@ -26,7 +28,9 @@ executePostQuery({
       country: 'TH',
       detail: '',
       password: 'tapepassword',
-      username: 'tapeusername'
+      username: 'tapeusername',
+      gender: 'male',
+      birthday: '06/03/1991'
     }
   }
 });

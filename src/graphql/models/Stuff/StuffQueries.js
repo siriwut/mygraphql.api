@@ -1,6 +1,6 @@
 const { GraphQLID, GraphQLString } = require('graphql');
-const { Stuff } = require('./StuffSchema');
-const StuffDB = require('../../../models/Stuff');
+const { Stuff, StuffWithFull } = require('./StuffSchema');
+const StuffService = require('../../../services/StuffService');
 
 module.exports = {
   stuff: {
@@ -10,6 +10,15 @@ module.exports = {
         type: GraphQLString
       }
     },
-    resolve: StuffDB.findByID
+    resolve: StuffService.findById
+  },
+  stuffWithFull: {
+    type: StuffWithFull,
+    args: {
+      _id: {
+        type: GraphQLString
+      }
+    },
+    resolve: StuffService.findFullById
   }
 };

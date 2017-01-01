@@ -19,7 +19,6 @@ const stuffQuery = `
       quantity
       category
       tags
-      owner
       createDate
       market
       images {
@@ -32,7 +31,6 @@ const stuffQuery = `
       wishes
       view
       likes
-      unlikes
       countPopular
       repostDate
       categories
@@ -46,7 +44,6 @@ const stuffQuery = `
       }
       sold
       soldDate
-      checkOwner
       updatedDate
     }
   }

@@ -10,13 +10,12 @@ const StuffSchema = new Schema({
     spot: [Number]
   },
   market: String,
-  owner: String,
+  owner: { type: ObjectId, ref: 'User' },
   path: String,
   price: Number,
   quantity: Number,
   category: String,
   tags: [String],
-  owner: { type: ObjectId, ref: 'User' },
   createDate: Number,
   market: String,
   images: [{ 
@@ -29,7 +28,6 @@ const StuffSchema = new Schema({
   wishes: [{ type: ObjectId, ref: 'User' }],
   view: Number,
   likes: [{ type: ObjectId, ref: 'User' }],
-  unlikes: [{ type: ObjectId, ref: 'User' }],
   countPopular: Number,
   repostDate: Number,
   categories: [String],
@@ -43,7 +41,6 @@ const StuffSchema = new Schema({
   }],
   sold: Boolean,
   soldDate: Number,
-  checkOwner: { type: ObjectId, ref: 'User' },
   updatedDate: Number
 });
 

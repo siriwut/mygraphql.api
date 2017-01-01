@@ -2,7 +2,7 @@ const http = require('http');
 const util = require('util');
 const querystring = require('querystring');
 
-const executeGetQuery = (graphQlQuery) => {
+const executeGetQuery = (graphQlQuery, printDepthLevel = 5) => {
   const options = {
     hostname: 'localhost',
     port: 3000,
@@ -16,7 +16,7 @@ const executeGetQuery = (graphQlQuery) => {
     res.on('data', (chunk) => {
       const data = JSON.parse(chunk);
       console.log('---------JSON Response---------');
-      console.log(util.inspect(data, { showHidden: true, depth: 10 }));
+      console.log(util.inspect(data, { showHidden: true, depth: printDepthLevel }));
     });
 
     res.on('end', () => {
@@ -31,7 +31,7 @@ const executeGetQuery = (graphQlQuery) => {
   req.end();
 };
 
-const executePostQuery = (graphQlQuery = {}) => {
+const executePostQuery = (graphQlQuery = {}, printDepthLevel = 5) => {
   const postData = JSON.stringify(graphQlQuery);
 
   const options = {
@@ -49,7 +49,7 @@ const executePostQuery = (graphQlQuery = {}) => {
     res.on('data', (chunk) => {
       const data = JSON.parse(chunk);
       console.log('---------JSON Response---------');
-      console.log(util.inspect(data, { showHidden: true, depth: 10 }));
+      console.log(util.inspect(data, { showHidden: true, depth: printDepthLevel }));
     });
 
     res.on('end', () => {

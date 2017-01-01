@@ -8,11 +8,3 @@ const collectionName = 'orderTransactions';// specify only two or more words col
 const OrderTransaction = mongoose.model('OrderTransaction', orderTransaction, collectionName);
 
 module.exports = OrderTransaction;
-
-module.exports.findByTransactionID = (root, { transactionId }) => {
-  return new Promise((resolve, reject) => {
-    OrderTransaction.findOne({ id: transactionId }, (err, orderTransaction) => {
-      err ? reject(err) : resolve(orderTransaction);
-    });
-  });
-};

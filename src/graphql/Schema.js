@@ -15,6 +15,7 @@ const Query = new GraphQLObjectType({
   fields: () => ({
     user: UserQueries.user,
     stuff: StuffQueries.stuff,
+    stuffWithFull: StuffQueries.stuffWithFull,
     role: RoleQueries.role,
     carts: CartQueries.carts,
     order: OrderQueries.orders,

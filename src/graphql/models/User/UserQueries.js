@@ -1,6 +1,6 @@
 const { GraphQLID, GraphQLString } = require('graphql');
 const { User } = require('./UserSchema');
-const UserDB = require('../../../models/User');
+const UserService = require('../../../services/UserService');
 
 module.exports = {
   user: {
@@ -10,6 +10,6 @@ module.exports = {
         type: GraphQLString
       }
     },
-    resolve: UserDB.getById
+    resolve: UserService.getById
   }
 };

@@ -1,6 +1,6 @@
 const { GraphQLID, GraphQLString } = require('graphql');
 const { Role } = require('./RoleSchema');
-const RoleDB = require('../../../models/Role');
+const RoleService = require('../../../services/RoleService');
 
 module.exports = {
   role: {
@@ -10,6 +10,6 @@ module.exports = {
         type: GraphQLString
       }
     },
-    resolve: RoleDB.findByID
+    resolve: RoleService.findById
   }
 };

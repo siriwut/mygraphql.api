@@ -5,7 +5,7 @@ const {
 } = require('graphql'); 
 
 const { User, UserInput } = require('./UserSchema');
-const UserDB = require('../../../models/User');
+const UserService = require('../../../services/UserService');
 
 module.exports = {
   createUser: {
@@ -15,6 +15,6 @@ module.exports = {
         type: UserInput
       }
     },
-    resolve: UserDB.create
+    resolve: UserService.create
   }
 };

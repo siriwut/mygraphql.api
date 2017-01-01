@@ -1,6 +1,6 @@
 const { GraphQLID, GraphQLString, GraphQLList } = require('graphql');
 const { Cart } = require('./CartSchema');
-const CartDB = require('../../../models/Cart');
+const CartService = require('../../../services/CartService');
 
 module.exports = {
   carts: {
@@ -10,6 +10,6 @@ module.exports = {
         type: GraphQLString
       }
     },
-    resolve: CartDB.findByUserID
+    resolve: CartService.findByUserId
   }
 };

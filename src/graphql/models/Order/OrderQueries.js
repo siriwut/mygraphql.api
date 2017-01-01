@@ -1,6 +1,6 @@
 const { GraphQLID, GraphQLString, GraphQLList } = require('graphql');
 const { Order } = require('./OrderSchema');
-const OrderDB = require('../../../models/Order');
+const OrderService = require('../../../services/OrderService');
 
 module.exports = {
   orders: {
@@ -10,6 +10,6 @@ module.exports = {
         type: GraphQLString
       }
     },
-    resolve: OrderDB.findByOrderID
+    resolve: OrderService.findByOrderId
   }
 };
