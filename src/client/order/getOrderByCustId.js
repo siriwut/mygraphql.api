@@ -3,8 +3,8 @@ const { executeGetQuery } = require('../client');
 const customerId = '4f88f907213200ba6b000001';
 
 const orderQuery = `
-  query {
-    order(userId: "${customerId}") {
+  query getOrderByCustId($customerId: String) {
+    order(userId: $customerId) {
       id
       stuff {
         _id
@@ -51,4 +51,9 @@ const orderQuery = `
   }
 `;
 
-executeGetQuery(orderQuery);
+executeGetQuery({ 
+  query: orderQuery,
+  variables: {
+    customerId
+  }
+});

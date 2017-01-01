@@ -48,8 +48,8 @@ const userField  = `
   }`;
 
 const stuffQuery = `
-  query {
-    stuffWithFull(_id: "${stuffId}") {
+  query getStuffWithFullById($stuffId: String) {
+    stuffWithFull(_id: $stuffId) {
       name
       category
       description
@@ -101,4 +101,9 @@ const stuffQuery = `
   }
 `;
 
-executeGetQuery(stuffQuery, 3);
+executeGetQuery({ 
+  query: stuffQuery,
+  variables: {
+    stuffId
+  }
+}, 3);

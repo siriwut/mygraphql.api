@@ -11,6 +11,7 @@ const port = 3000;
 
 const _resolveReq = (req) => {
   const nextReq = Object.assign({}, req);
+
   urlObj = url.parse(decodeURIComponent(nextReq.url), true);
 
   nextReq.query = urlObj.query;
@@ -23,9 +24,12 @@ const _resolveReq = (req) => {
 
 const _resolveGraphQlQuery = (req) => {
   const nextReq = _resolveReq(req);
+  const graphqlQuery = JSON.parse(nextReq.query.query);
 
   nextReq.graphql = { 
-    query: nextReq.query.query,
+    query: graphqlQuery.query,
+    operationName: graphqlQuery.operationName || '',
+    variables: graphqlQuery.variables || {}
   };
 
   return nextReq;

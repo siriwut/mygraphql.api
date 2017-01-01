@@ -3,8 +3,8 @@ const { executeGetQuery } = require('../client');
 const userId = '4f88f907213200ba6b000001';
 
 const graphQlQuery = `
-  query {
-    carts(userId: "${userId}") {
+  query getCartByUserId($userId: String) {
+    carts(userId: $userId) {
       _id
       user
       seller {
@@ -28,4 +28,9 @@ const graphQlQuery = `
   }
 `;
 
-executeGetQuery(graphQlQuery);
+executeGetQuery({
+  query: graphQlQuery,
+  variables: {
+    userId
+  }
+});

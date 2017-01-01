@@ -3,8 +3,8 @@ const { executeGetQuery } = require('../client');
 const userId = '4f88f907213200ba6b000001';
 
 const graphQlQuery = `
-  query {
-    user(_id: "${userId}") {
+  query getUserById($userId: String) {
+    user(_id: $userId) {
       _id
       email
       firstname
@@ -62,4 +62,9 @@ const graphQlQuery = `
   }
 `;
 
-executeGetQuery(graphQlQuery);
+executeGetQuery({
+  query: graphQlQuery,
+  variables: { 
+    userId
+  } 
+});

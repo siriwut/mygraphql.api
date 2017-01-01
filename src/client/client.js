@@ -2,11 +2,11 @@ const http = require('http');
 const util = require('util');
 const querystring = require('querystring');
 
-const executeGetQuery = (graphQlQuery, printDepthLevel = 5) => {
+const executeGetQuery = (graphQlQuery = {}, printDepthLevel = 5) => {
   const options = {
     hostname: 'localhost',
     port: 3000,
-    path: `/graphql?query=${encodeURIComponent(graphQlQuery)}`,
+    path: `/graphql?query=${encodeURIComponent(JSON.stringify(graphQlQuery))}`,
     method: 'GET'
   };
 

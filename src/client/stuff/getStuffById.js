@@ -3,8 +3,8 @@ const { executeGetQuery } = require('../client');
 const stuffId = '50c8072ded6c52a304000001';
 
 const stuffQuery = `
-  query {
-    stuff(_id: "${stuffId}") {
+  query getStuffById($stuffId: String) {
+    stuff(_id: $stuffId) {
       name
       category
       description
@@ -49,4 +49,9 @@ const stuffQuery = `
   }
 `;
 
-executeGetQuery(stuffQuery);
+executeGetQuery({
+  query: stuffQuery,
+  variables: {
+    stuffId
+  }
+});

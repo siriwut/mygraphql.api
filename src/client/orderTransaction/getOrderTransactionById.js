@@ -3,8 +3,8 @@ const { executeGetQuery } = require('../client');
 const transactionId = '28818664648570';
 
 const orderTransactionQuery = `
-  query {
-    orderTransaction(transactionId:"${transactionId}") {
+  query getOrderTransactionById($transactionId: String) {
+    orderTransaction(transactionId: $transactionId) {
       _id
       id
       seller {
@@ -58,4 +58,9 @@ const orderTransactionQuery = `
   }
 `;
 
-executeGetQuery(orderTransactionQuery);
+executeGetQuery({ 
+  query: orderTransactionQuery,
+  variables: {
+    transactionId
+  }
+});
