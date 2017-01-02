@@ -6,7 +6,8 @@ const {
     GraphQLNonNull,
     GraphQLList,
     GraphQLID,
-    GraphQLInt
+    GraphQLInt,
+    GraphQLFloat
 } = require('graphql');
 
 const StuffLocationType = new GraphQLObjectType({
@@ -16,7 +17,7 @@ const StuffLocationType = new GraphQLObjectType({
       type: GraphQLString
     },
     spot: {
-      type: GraphQLInt 
+      type: GraphQLString
     }
   })
 });

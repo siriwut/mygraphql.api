@@ -14,13 +14,13 @@ const UserInput = new GraphQLInputObjectType({
   name: 'UserInput',
   fields: () => ({
     email: {
-      type: GraphQLString
+      type: new GraphQLNonNull(GraphQLString)
     },
     firstname: {
-      type: GraphQLString
+      type: new GraphQLNonNull(GraphQLString)
     },
     lastname: {
-      type: GraphQLString
+      type: new GraphQLNonNull(GraphQLString)
     },
     avatar: {
       type: GraphQLString
@@ -32,13 +32,13 @@ const UserInput = new GraphQLInputObjectType({
       type: GraphQLString
     },
     password: {
-      type: GraphQLString
+      type: new GraphQLNonNull(GraphQLString)
     },
     username: {
-      type: GraphQLString
+      type: new GraphQLNonNull(GraphQLString)
     },
     gender: {
-      type: GraphQLString
+      type: new GraphQLNonNull(GraphQLString)
     },
     birthday: {
       type: GraphQLString

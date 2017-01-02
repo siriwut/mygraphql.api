@@ -5,6 +5,7 @@ const {
 
 const { UserQueries, UserMutation } = require('./models/User/UserQL');
 const { StuffQueries } = require('./models/Stuff/StuffQL');
+const { InterestQueries } = require('./models/Interest/InterestQL');
 const { RoleQueries } = require('./models/Role/RoleQL');
 const { CartQueries } = require('./models/Cart/CartQL');
 const { OrderQueries } = require('./models/Order/OrderQL');
@@ -16,10 +17,11 @@ const Query = new GraphQLObjectType({
     user: UserQueries.user,
     stuff: StuffQueries.stuff,
     stuffWithFull: StuffQueries.stuffWithFull,
+    interest: InterestQueries.interest,
     role: RoleQueries.role,
     carts: CartQueries.carts,
     order: OrderQueries.orders,
-    orderTransaction: OrderTransactionQueries.orderTransaction
+    orderTransaction: OrderTransactionQueries.orderTransaction,
   })
 });
 

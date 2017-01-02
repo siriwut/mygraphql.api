@@ -18,6 +18,8 @@ const {
 
 const { User } = require('../../User/UserSchema');
 
+const UserType = User;
+
 const StuffWithFullType = new GraphQLObjectType({
   name: 'StuffWithFull',
   fields: () => ({
@@ -37,7 +39,7 @@ const StuffWithFullType = new GraphQLObjectType({
       type: GraphQLString 
     },
     owner: { 
-      type: User 
+      type: UserType 
     },
     path: { 
       type: GraphQLString 
@@ -64,13 +66,13 @@ const StuffWithFullType = new GraphQLObjectType({
       type: new GraphQLList(StuffImageType) 
     },
     wishes: { 
-      type: new GraphQLList(User)
+      type: new GraphQLList(UserType)
     },
     view: { 
       type: GraphQLInt 
     },
     likes: { 
-      type: new GraphQLList(User) 
+      type: new GraphQLList(UserType) 
     },
     countPopular: { 
       type: GraphQLInt 

@@ -2,54 +2,9 @@ const { executeGetQuery } = require('../client');
 
 const stuffId = '50c8072ded6c52a304000001';
 
-const userField  = `      
-  _id
-  email
-  firstname
-  lastname
-  avatar
-  country
-  havePassword
-  detail
-  view
-  password
-  gender
-  birthday
-  role {
-    id
-    name
-  }
-  shop {
-    name
-    tel
-    website
-    facebook
-    instagram
-    policy
-    address
-    idCard
-    verified
-    requestDate
-    status
-    cover
-    paymentPolicy
-    shippingPolicy
-    refundPolicy
-    headline
-    brandStory
-    prettyUrl
-    brandImages {
-      path
-      caption
-    }
-    logo
-    verifiedDate
-    welcomeMessage
-  }`;
-
 const stuffQuery = `
   query getStuffWithFullById($stuffId: String) {
-    stuffWithFull(_id: $stuffId) {
+    stuff : stuffWithFull(_id: $stuffId) {
       name
       category
       description
@@ -59,7 +14,7 @@ const stuffQuery = `
       }
       market
       owner {
-        ${ userField }
+        ...user
       }
       path
       price
@@ -76,11 +31,11 @@ const stuffQuery = `
         }
       }
       wishes {
-        ${ userField }
+        ...user
       }
       view
       likes {
-        ${ userField }
+        ...user
       }
       countPopular
       repostDate
@@ -97,6 +52,50 @@ const stuffQuery = `
       soldDate
       checkOwner
       updatedDate
+    }
+  }
+
+  fragment user on User {
+    _id
+    email
+    firstname
+    lastname
+    avatar
+    country
+    detail
+    view
+    gender
+    birthday
+    role {
+      id
+      name
+    }
+    shop {
+      name
+      tel
+      website
+      facebook
+      instagram
+      policy
+      address
+      idCard
+      verified
+      requestDate
+      status
+      cover
+      paymentPolicy
+      shippingPolicy
+      refundPolicy
+      headline
+      brandStory
+      prettyUrl
+      brandImages {
+        path
+        caption
+      }
+      logo
+      verifiedDate
+      welcomeMessage
     }
   }
 `;
