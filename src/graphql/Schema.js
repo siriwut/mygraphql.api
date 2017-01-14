@@ -10,6 +10,7 @@ const { RoleQueries } = require('./models/Role/RoleQL');
 const { CartQueries } = require('./models/Cart/CartQL');
 const { OrderQueries } = require('./models/Order/OrderQL');
 const { OrderTransactionQueries } = require('./models/OrderTransaction/OrderTransactionQL');
+const { WishListQueries } = require('./models/WishList/WishListQL');
 
 const Query = new GraphQLObjectType({
   name: 'Query',
@@ -22,6 +23,7 @@ const Query = new GraphQLObjectType({
     carts: CartQueries.carts,
     order: OrderQueries.orders,
     orderTransaction: OrderTransactionQueries.orderTransaction,
+    wishList: WishListQueries.wishList
   })
 });
 

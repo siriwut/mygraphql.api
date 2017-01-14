@@ -13,6 +13,7 @@
     "babel-runtime": "^6.20.0",
     "graphql": "^0.8.2",
     "graphql-helpers": "0.0.10",
+    "log4js": "^1.1.0",
     "mongodb": "^2.2.14",
     "mongoose": "^4.7.2"
   }

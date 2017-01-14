@@ -7,26 +7,26 @@ const interestQuery = `
     interest(userId: $userId) {
       countFollowers
       country
-      deletedWishes(page: 0, limit: 1) {
+      deletedWishes(page: 0, limit: 10) {
         stuff {
           ...stuff
         }
         createDate
         deletedDate
       }
-      followers(page: 0, limit: 5) {
+      followers(page: 0, limit: 10) {
         ...user
       }
-      following(page: 0, limit: 1) {
+      following(page: 0, limit: 10) {
         ...user
       }
-      unfollow(page: 0, limit: 1) {
+      unfollow(page: 0, limit: 10) {
         ...user
       }
       user {
         ...user
       }
-      wishes(page: 0, limit: 1) {
+      wishes(page: 0, limit: 10) {
         stuff {
           ...stuff
         }

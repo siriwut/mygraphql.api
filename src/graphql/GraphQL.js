@@ -22,11 +22,11 @@ class GraphQL {
       schema,
       query,
       null,
-      null,
+      { userId: '4f88f907213200ba6b000001' },
       variables,
       operationName
     ).then((data) => {
-      this.res.write(JSON.stringify(data));
+      this.res.write(JSON.stringify(data), 'UTF-8');
       this.res.end();
     });
   }

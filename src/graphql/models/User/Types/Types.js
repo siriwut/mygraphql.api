@@ -99,7 +99,8 @@ const UserShopType = new GraphQLObjectType({
     brandImages: { type: new GraphQLList(UserBrandImageType) },
     logo: { type: GraphQLString },
     verifiedDate: { type: GraphQLString },
-    welcomeMessage: { type: GraphQLString }
+    welcomeMessage: { type: GraphQLString },
+    guarantee: { type: GraphQLString }
   })
 });
 

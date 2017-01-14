@@ -9,18 +9,21 @@ const executeGetQuery = (graphQlQuery = {}, printDepthLevel = 5) => {
     path: `/graphql?query=${encodeURIComponent(JSON.stringify(graphQlQuery))}`,
     method: 'GET'
   };
-
+  console.log(options.path);
   const req = http.request(options, (res) => {
+    let tmpData = '';
+
     res.setEncoding('utf8');
 
     res.on('data', (chunk) => {
-      const data = JSON.parse(chunk);
-      console.log('---------JSON Response---------');
-      console.log(util.inspect(data, { showHidden: true, depth: printDepthLevel }));
+      tmpData += chunk;
     });
 
     res.on('end', () => {
-      //console.log('responsed');
+      const data = JSON.parse(tmpData);
+
+      console.log('---------JSON Response---------');
+      //console.log(util.inspect(data, { showHidden: true, depth: printDepthLevel }));
     });
   });
 
@@ -44,16 +47,18 @@ const executePostQuery = (graphQlQuery = {}, printDepthLevel = 5) => {
   };
 
   const req = http.request(options, (res) => {
+    let tmpData = '';
+    
     res.setEncoding('utf8');
 
     res.on('data', (chunk) => {
-      const data = JSON.parse(chunk);
-      console.log('---------JSON Response---------');
-      console.log(util.inspect(data, { showHidden: true, depth: printDepthLevel }));
+      tmpData += chunk;
     });
 
     res.on('end', () => {
-      //console.log('responsed');
+      const data = JSON.parse(tmpData);
+      console.log('---------JSON Response---------');
+      console.log(util.inspect(data, { showHidden: true, depth: printDepthLevel }));
     });
   });
 

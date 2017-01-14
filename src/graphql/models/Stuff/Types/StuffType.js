@@ -19,6 +19,9 @@ const {
 const StuffType = new GraphQLObjectType({
   name: 'Stuff',
   fields: () => ({
+    _id: {
+      type: GraphQLString
+    },
     name: { 
       type: GraphQLString 
     },

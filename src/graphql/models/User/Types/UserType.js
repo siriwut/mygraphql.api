@@ -34,7 +34,8 @@ const UserType = new GraphQLObjectType({
       type: GraphQLString 
     },
     firstname: {
-      type: GraphQLString
+      type: GraphQLString,
+      deprecationReason: 'Fuck name'
     },
     lastname: { 
       type: GraphQLString
@@ -80,6 +81,9 @@ const UserType = new GraphQLObjectType({
     },
     payments: { 
       type: UserPaymentType
+    },
+    type: {
+      type: GraphQLString
     }
   })
 });
