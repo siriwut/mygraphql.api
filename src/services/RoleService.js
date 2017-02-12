@@ -4,7 +4,7 @@ class RoleService {
   static findById(root, { _id }) {
     return new Promise((resolve, reject) => {
       Role.findOne({ _id }, (err, role) => {
-        err ? reject(err) : resolve(role);
+        (err || !role) ? reject(err) : resolve(role);
       });
     });
   }

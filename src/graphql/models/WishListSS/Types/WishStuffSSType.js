@@ -10,13 +10,8 @@ const {
     GraphQLFloat
 } = require('graphql');
 
-
-
-//const { ObjectID } = require('mongodb');
-
-//const mongoClient = require('../../../../helpers/MongoClientConnect');
-
-const UserDB = require('../../../../models/User');
+const { ObjectID } = require('mongodb');
+const mongoClient = require('../../../../helpers/MongoClientConnect');
 
 const {
   Time
@@ -47,8 +42,8 @@ const {
 
 const UserType = User;
 
-const CustomWishStuffType = new GraphQLObjectType({
-  name: 'CustomWishStuff',
+const CustomWishStuffSSType = new GraphQLObjectType({
+  name: 'CustomWishStuffSS',
   fields: () => ({
     _id: {
       type: GraphQLString
@@ -72,16 +67,13 @@ const CustomWishStuffType = new GraphQLObjectType({
       type: UserType,
       resolve: ({ owner }) => {
         return new Promise((resolve, reject) => {
-          // mongoClient.exec((db) => {
-          //   const collection = db.collection('users');
+          mongoClient.exec((db) => {
+            const collection = db.collection('users');
 
-          //   collection.findOne({ _id: ObjectID(owner) }, (error, user) => {
-          //     db.close();
-          //     return error ? reject(error) : resolve(user);
-          //   });
-          // });
-          UserDB.findOne({ _id: owner }, (err, user) => {
-            err ? reject(err) : resolve(user);
+            collection.findOne({ _id: ObjectID(owner) }, (error, user) => {
+              db.close();
+              return error ? reject(error) : resolve(user);
+            });
           });
         });
       } 
@@ -196,11 +188,11 @@ const CustomWishStuffType = new GraphQLObjectType({
   })
 });
 
-const WishStuffType = new GraphQLObjectType({
-  name: 'WishStuff',
+const WishStuffSSType = new GraphQLObjectType({
+  name: 'WishStuffSS',
   fields: () => ({
     stuff: {
-      type: CustomWishStuffType
+      type: CustomWishStuffSSType,
     },
     createDate: {
       type: GraphQLFloat
@@ -213,5 +205,5 @@ const WishStuffType = new GraphQLObjectType({
 });
 
 module.exports = {
-  WishStuffType
+  WishStuffSSType
 };

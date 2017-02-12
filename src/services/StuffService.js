@@ -17,7 +17,7 @@ class StuffService {
         .populate('wishes')
         .populate('likes')
         .exec((err, stuff) => {
-          err ? reject(err) : resolve(stuff);
+          (err || !stuff) ? reject(err) : resolve(stuff);
         });
       });
   }

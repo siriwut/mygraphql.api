@@ -4,7 +4,7 @@ class OrderService {
   static findByOrderId (root, { userId }) {
     return new Promise((resolve, reject) => {
       Order.find({ 'user._id': userId }, (err, orders) => {
-        err ? reject(err) : resolve(orders);
+        (err || !orders) ? reject(err) : resolve(orders);
       });
     });
   }

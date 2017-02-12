@@ -14,7 +14,7 @@ class UserService {
   static getById(root, { _id }) {
     return new Promise((resolve, reject) => {
       User.findOne({ _id }, (err, user) => {
-        err ? reject(err) : resolve(user);
+        (err || !user) ? reject(err) : resolve(user);
       });
     });
   }
