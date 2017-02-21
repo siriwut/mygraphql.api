@@ -9,6 +9,10 @@ const {
     GraphQLInt
 } = require('graphql');
 
+const UserService = require('../../../../services/UserService');
+const { User } = require('../../User/UserSchema');
+const UserRepository = require('../../../../models/User');
+
 const {
   StuffLocationType,
   StuffImageSizeType,
@@ -37,8 +41,18 @@ const StuffType = new GraphQLObjectType({
     market: { 
       type: GraphQLString 
     },
+    ownerId: {
+      type: GraphQLString,
+      resolve: stuff => stuff.owner
+    },
     owner: { 
-      type: GraphQLString 
+      type: User,
+      args: {
+        _id: {
+          type: GraphQLString
+        }
+      },
+      resolve: stuff => UserService.getById(null, { _id: stuff.owner})
     },
     path: { 
       type: GraphQLString 

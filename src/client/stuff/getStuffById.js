@@ -1,6 +1,6 @@
 const { executeGetQuery } = require('../client');
 
-const stuffId = '50c8072ded6c52a304000001';
+const stuffId = '4f48e47c8c47fd6507000010';
 
 const stuffQuery = `
   query getStuffById($stuffId: String) {
@@ -13,14 +13,12 @@ const stuffQuery = `
         spot
       }
       market
-      owner
+      ownerId
+      owner {
+        email
+        firstname
+      }
       path
-      price
-      quantity
-      category
-      tags
-      createDate
-      market
       images {
         path
         size {
@@ -29,11 +27,6 @@ const stuffQuery = `
         }
       }
       wishes
-      view
-      likes
-      countPopular
-      repostDate
-      categories
       markets
       editorPickDate
       deleted
@@ -43,8 +36,6 @@ const stuffQuery = `
         quantity
       }
       sold
-      soldDate
-      updatedDate
     }
   }
 `;
