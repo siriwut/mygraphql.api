@@ -23,7 +23,7 @@ const executeGetQuery = (graphQlQuery = {}, printDepthLevel = 5) => {
       const data = JSON.parse(tmpData);
 
       console.log('---------JSON Response---------');
-      //console.log(util.inspect(data, { showHidden: true, depth: printDepthLevel }));
+      console.log(util.inspect(data, { showHidden: true, depth: printDepthLevel }));
     });
   });
 
